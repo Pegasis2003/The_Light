@@ -68,7 +68,7 @@ function update:init()
                 self.download(self.downloadNum)
             end
         end
-        local fail=function() self.downloadError() changeTo(Start) end
+        local fail=function() self.downloadError() close() end
         http.request("https://raw.githubusercontent.com/Pegasis2003/The_Light/master/"..self.updateData.classes[self.downloadNum]..".lua",success,fail)
             
     end
@@ -78,7 +78,7 @@ function update:init()
         wait(1,self.download())
         self.timeOutId=tween(30,self,{timeOut=0},tween.easing.linear,
         function()
-            self.timeOutError() changeTo(Start)
+            self.timeOutError() close()
         end)
     end)
     self.update.fontSize=40
