@@ -1,4 +1,4 @@
-displayMode(FULLSCREEN)
+displayMode(FULLSCREEN_NO_BUTTONS)
 supportedOrientations(LANDSCAPE_ANY)
 function setup()
     local success=function(data)
