@@ -33,7 +33,7 @@ function update:init()
             end
         end
         local fail=function() self.downloadError() changeTo(Start) end
-        http.request("https://raw.githubusercontent.com/Pegasis2003/The_Light/master/"..self.updateData.classes[n]..".lua",success,fail)
+        http.request("https://raw.githubusercontent.com/Pegasis2003/The_Light/master/"..self.updateData.classes[self.downloadNum]..".lua",success,fail)
             
     end
     
