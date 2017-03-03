@@ -1,6 +1,10 @@
-{build=700,name="Test Version",note=[[更新日志：
+{build=700,
+name="Test Version",
+note=[[更新日志：
 1、程序可以自动检测更新并且安装
 2、懒得打字
 3、反正没有新关卡
 
-注意：由于此版本更改了程序数据存储路径，会导致之前的关卡数据清零]]}
+注意：由于此版本更改了程序数据存储路径，会导致之前的关卡数据清零]],
+classes={"info","Main","sounds","levels","start","chooselevel","game","update","button","button2","touchArea","processBar","slider"}
+}
