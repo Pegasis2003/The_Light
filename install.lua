@@ -84,6 +84,8 @@ function update:init()
     self.update.fontSize=40
     self.cancel=button("CANCEL",WIDTH-200,150,200,100,function() close() end)
     self.cancel.fontSize=40
+    
+    self.process=processBar("正在下载数据......",WIDTH/2,170,WIDTH-200,70)
 end
 
 function update:draw()
@@ -106,10 +108,8 @@ function update:draw()
         self.update:draw()
         self.cancel:draw()
     else
-        font("Helvetica")
-        textMode(CENTER)
-        fill(255, 255, 255, 255)
-        text("正在下载数据......",WIDTH/2,170)
+        self.process.process=self.downloadNum/#self.updateData.classes
+        self.process:draw()
     end
 end
 
@@ -184,4 +184,41 @@ function button:touched(t)
     else
         self.istouching=false
     end
+end
+
+processBar = class()
+
+function processBar:init(tex,x,y,w,h)
+    self.text=tex
+    self.x=x
+    self.y=y
+    self.h=h
+    self.w=w
+    self.process=0
+end
+
+function processBar:draw()
+    rectMode(CENTER)
+    strokeWidth(3)
+    stroke(255, 255, 255, 255)
+    fill(0, 0, 0, 255)
+    rect(self.x,self.y,self.w,self.h)
+    
+    fontSize(25)
+    textMode(CORNER)
+    fill(127, 127, 127, 255)
+    text(self.text,self.x-self.w/2+20,self.y-13)
+    
+    rectMode(CORNER)
+    fill(255, 255, 255, 255)
+    rect(self.x-self.w/2,self.y-self.h/2,self.w*self.process,self.h)
+    
+    clip(self.x-self.w/2,self.y-self.h/2,self.w*self.process,self.h)
+    fill(0, 0, 0, 255)
+    text(self.text,self.x-self.w/2+20,self.y-13)
+    clip()
+end
+
+function processBar:touched(touch)
+    
 end
