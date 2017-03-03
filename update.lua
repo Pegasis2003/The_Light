@@ -45,7 +45,7 @@ function update:init()
         end)
     end)
     self.update.fontSize=40
-    self.cancel=button("CANCEL",WIDTH-200,150,200,100,function() changeTo(Start) end)
+    self.cancel=button("CANCEL",WIDTH-200,150,200,100,function() changeTo(Start)  end)
     self.cancel.fontSize=40
     
     self.process=processBar("正在下载数据......",WIDTH/2,170,WIDTH-200,70)
