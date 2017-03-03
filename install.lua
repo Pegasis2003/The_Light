@@ -6,7 +6,7 @@ function setup()
         load("Update.updateData="..data)()
         up=true
     end
-    local fail=function() alert("fail","") end
+    local fail=function() alert("fail","") close() end
     http.request("https://raw.githubusercontent.com/Pegasis2003/The_Light/master/updateData.txt",success,fail)
 end
 
