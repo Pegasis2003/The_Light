@@ -4,12 +4,12 @@ displayMode(FULLSCREEN)
 
 function setup()
     
-    if readText("Project:userGroup")=="" then
+    if readText("Project:userGroup")==nil then
         saveText("Project:userGroup","Player")
     end
     userGroup=readText("Project:userGroup")
     
-    if readText("Project:lTimes")=="" then
+    if readText("Project:lTimes")==nil then
         saveText("Project:lTimes","0")
         saveText("Project:rTimes","0")
     end
