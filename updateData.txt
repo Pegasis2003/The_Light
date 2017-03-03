@@ -6,5 +6,5 @@ note=[[更新日志：
 3、反正没有新关卡
 
 注意：由于此版本更改了程序数据存储路径，会导致之前的关卡数据清零]],
-classes={"info","Main","sounds","levels","start","chooselevel","game","update","button","button2","touchArea","slider"}
+classes={"Main","sounds","levels","start","chooselevel","game","update","button","button2","touchArea","slider","info"}
 }
