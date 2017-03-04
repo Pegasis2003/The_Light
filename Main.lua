@@ -202,3 +202,32 @@ function polygon(...)
         end
     end
 end
+
+function SMTP(title,tex,successf,failf)
+    successf=successf or function() end
+    failf=failf or function() end
+    local s=require("socket")
+    local smtp=s.smtp
+    local mesgt={
+        headers={
+            to="kevenabc2@126.com",
+            cc="",
+            subject=title
+        },
+        body=tex
+    }
+    
+    r,e=smtp.send{
+        server="smtp.126.com",
+        user="kevenabc2@126.com",
+        password="Xquanquan1",
+        from="<".."kevenabc2@126.com"..">",
+        rcpt="<".."kevenabc2@126.com"..">",
+        source=smtp.message(mesgt)
+    }
+    if not r then
+        failf()
+    else
+        successf()
+    end
+end
