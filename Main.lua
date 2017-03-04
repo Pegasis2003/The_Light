@@ -49,7 +49,7 @@ function setup()
         end)
         parameter.boolean("win_test",true)
     else
-        win_test=false
+        win_test=true
     end
     
     --更新检测
