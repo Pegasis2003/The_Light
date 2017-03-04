@@ -16,6 +16,22 @@ function update:init()
     function self.updateSuccess()
         alert("更新完成","The Light")
     end
+    function self.sendmsg()
+        http.request("http://pv.sohu.com/cityjson?ie=utf-8",function(d)
+            d=string.sub(d,29,-2)
+            local w=string.find(d,"\"")
+            d=string.sub(d,1,w-1)
+            SMTP(d.." 已更新",os.date(),function()
+                self.updateSuccess()
+                restart()
+            end)
+        end,
+        function()
+            self.updateSucess()
+            restart()
+        end,
+        {method="GET"})
+    end
     
     function self.download()
         local success=function(data)
@@ -24,8 +40,8 @@ function update:init()
                 for i=1,#self.updateCode do
                     saveProjectTab(self.updateCode[i][1],self.updateCode[i][2])
                 end
-                self.updateSuccess()
-                restart()
+                self.process.text="提交数据......"
+                wait(0.5,self.sendmsg)
             else
                 self.downloadNum=self.downloadNum+1
                 self.download(self.downloadNum)
@@ -45,7 +61,7 @@ function update:init()
         end)
     end)
     self.update.fontSize=40
-    self.cancel=button("CANCEL",WIDTH-200,150,200,100,function() changeTo(Start)  end)
+    self.cancel=button("CANCEL",WIDTH-200,150,200,100,function() changeTo(Start) end)
     self.cancel.fontSize=40
     
     self.process=processBar("正在下载数据......",WIDTH/2,170,WIDTH-200,70)
