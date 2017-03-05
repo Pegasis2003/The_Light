@@ -1,7 +1,7 @@
 {build=706,
-name="Build 706",
+name="Build 707",
 note=[[更新日志：
-1、修复了当用户组为Player时无法通过游戏的bug
-2、更新模块优化，点下UPDATE按钮后开发者就会收到提示]],
+1、我觉得可以远程控制所有的软件更新是一件很酷的事情
+2、所以我决定来一次没有意义的更新]],
 classes={"Main","sounds","levels","start","chooselevel","game","update","button","button2","touchArea","processBar","slider","info"}
 }
